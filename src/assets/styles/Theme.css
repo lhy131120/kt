@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Noto Sans', sans-serif;
+  --leading-tight: 1.2;
+  --tracking-small: 0.02em;
+  --breakpoint-lg: 62rem;
+
+  --color-primary-10: oklch(64.13% 0.198 37.15);
+  --color-primary-20: oklch(69.80% 0.197 37.98);
+  --color-primary-30: oklch(76.13% 0.134 39.45);
+  --color-primary-40: oklch(88.24% 0.066 43.08);
+  --color-primary-50: oklch(98.49% 0.008 61.46);
+  --color-primary-60: oklch(97.60% 0.014 57.59);
+
+  --color-secondary-10: oklch(67.38% 0.186 39.71);
+  --color-secondary-20: oklch(67.82% 0.030 62.10);
+  --color-secondary-30: oklch(88.49% 0.056 49.21);
+  --color-secondary-40: oklch(93.05% 0.063 79.32);
+  --color-secondary-50: oklch(43.51% 0.071 59.49);
+  --color-secondary-60: oklch(81.12% 0.026 61.57);
+  --color-secondary-80: oklch(56.20% 0.034 62.16);
+
+  --color-grayscale-10: oklch(61.33% 0.000 0);
+}
+
+@property --input-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(70% 0.02 240deg);
+}
+
+@property --input-focus-ring {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: oklch(69.80% 0.197 37.98);
+}
+
+@property --input-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(98% 0.005 240deg);
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: 1336px;
+    margin-inline: auto;
+    padding-inline: 12px;
+
+    @media (min-width: 992px) {
+      padding-inline: 20px;
+    }
+  }
+}
+
+@layer components {
+
+  /* .material-symbols-outlined {
+    font-size: 1.25rem !important;
+  } */
+
+  body {
+    color: var(--color-secondary-80);
+  }
+
+  main {
+    min-height: 50vh;
+  }
+
+  .dc-up:before,
+  .dc-down:before {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 28px;
+    background: url("@/images/dc_up.png") repeat-x center center / contain;
+    z-index: 10;
+  }
+
+  .dc-down:before {
+    background: url("@/images/dc_down.png") repeat-x center center / contain;
+    top: 0;
+  }
+
+  .title {
+
+    @apply text-primary-20 font-bold leading-tight text-center block relative mb-5 lg:mb-10;
+    font-size: clamp(1.5rem, -0.1316rem + 2.6316vw, 2rem);
+
+    span {
+      @apply relative flex justify-center items-center gap-4 lg:gap-6 px-4 lg:px-14;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        height: 32px;
+        width: 21px;
+        background: no-repeat center / contain;
+
+        @media (min-width: 992px) {
+          height: 47px;
+          width: 30px;
+        }
+      }
+
+      &::before {
+        background-image: url("@/images/fork-s.png");
+
+        @media (min-width: 992px) {
+          background-image: url("@/images/fork.png");
+        }
+      }
+
+      &::after {
+        background-image: url("@/images/spoon-s.png");
+
+        @media (min-width: 992px) {
+          background-image: url("@/images/spoon.png");
+        }
+      }
+    }
+  }
+
+  .btn {
+    @apply text-white rounded-full text-base/normal py-3 px-14 cursor-pointer bg-primary-20 hover:bg-primary-10 disabled:bg-secondary-60 transition-all duration-300;
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-primary-30;
+    }
+
+    &.btn-outline {
+      @apply text-primary-20 hover:text-white bg-transparent hover:bg-primary-20 border border-primary-20;
+    }
+
+    &.btn-icon {
+      @apply px-6 inline-flex gap-1.5 items-center;
+
+      &>.material-symbols-outlined {
+        font-size: 1.125rem !important;
+      }
+    }
+  }
+
+  .inputText {
+    @apply border border-secondary-60 rounded-lg px-4 py-2 text-base focus:outline-none;
+    height: 40px;
+    appearance: none;
+    box-shadow: 0 2px 6px oklch(0% 0 0 / 0.03);
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: oklch(81.12% 0.026 61.57);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 4px var(--input-focus-ring), 0 4px 12px oklch(0% 0 0 / 0.08);
+    }
+  }
+}

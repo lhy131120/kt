@@ -1,13 +1,15 @@
 import { Outlet, NavLink } from "react-router";
+import { Header } from "@/components/common/Header";
+import { Footer } from "@/components/common/Footer";
 
 const FrontLayout = () => {
   return (
     <>
-      {/* <header>Header</header> */}
+      <Header />
       <main>
         <Outlet />
       </main>
-      {/* <footer>footer</footer> */}
+      <Footer />
     </>
   )
 }

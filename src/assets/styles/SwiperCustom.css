@@ -1,0 +1,122 @@
+/* Swiper Pagination Bullets */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #ffffff;
+  opacity: 1;
+  transform: scale(1) !important;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet:not(.swiper-pagination-bullet-active):before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(69.80% 0.197 37.98);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px;
+  height: 12px;
+  background: oklch(69.80% 0.197 37.98);
+  opacity: 1;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 48px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  background: oklch(98.49% 0.008 61.46);
+  opacity: 0.8;
+  border-radius: 50%;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-button-prev {
+  left: 48px !important;
+}
+
+.swiper-button-next {
+  right: 48px !important;
+}
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  display: none;
+}
+
+/* Hide Swiper default arrow */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Custom arrow using border trick */
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid oklch(43.51% 0.071 59.49);
+  border-right: 3px solid oklch(43.51% 0.071 59.49);
+}
+
+.swiper-button-prev::before {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+
+.swiper-button-next::before {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  opacity: 1;
+  box-shadow: 0 4px 12px oklch(84.96% 0.078 39.52);
+  transform: scale(1.05);
+}
+
+.swiper-button-prev:focus-visible,
+.swiper-button-next:focus-visible {
+  opacity: 1;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 4px 12px oklch(84.96% 0.078 39.52);
+}
+
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  transform: scale(0.95);
+}
+
+/* Pagination bullet keyboard focus */
+.swiper-pagination-bullet:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 992px) {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+.swiper-slide {
+  width: auto;
+}

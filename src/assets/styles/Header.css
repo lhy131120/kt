@@ -1,0 +1,251 @@
+.mainNavSearch {
+  width: clamp(275px, 100%, 345px);
+}
+
+.mainNav .mainNavItem {
+  position: relative;
+  display: flex;
+  gap: .25rem;
+  align-items: center;
+}
+
+.mainNav .mainNavLink {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.mainNav .subNavMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 150px;
+  width: max-content;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.mainNav .subNavMenu>* {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mainNav .subNavMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mainNav .subNavMenu.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.mainNav .subNavLink {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: var(--color-secondary-50);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mainNav .subNavLink:hover {
+  color: var(--color-primary-20);
+  background-color: var(--color-primary-50);
+}
+
+.mainNav .subNavMenu .subNavItem:first-child .subNavLink {
+  border-radius: 8px 8px 0 0;
+}
+
+.mainNav .subNavMenu .subNavItem:last-child .subNavLink {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Mobile Menu */
+
+/* Backdrop Overlay */
+.backdrop-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+
+.backdrop-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu Panel */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background-color: #fff;
+  z-index: 999;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMenu.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobileMenu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.mobileMenu-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: var(--color-secondary-50);
+  transition: color 0.2s ease;
+}
+
+.mobileMenu-close:hover {
+  color: var(--color-primary-10);
+}
+
+/* Mobile Nav */
+.mobileMenu-nav {
+  flex: 1;
+  padding: 8px 0;
+}
+
+.mobileNav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNavItem {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobileNavItem-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileNavLink {
+  display: block;
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 1rem;
+  color: var(--color-secondary-50);
+  transition: color 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--color-primary-20);
+}
+
+.mobileNavItem-toggle {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  color: var(--color-secondary-50);
+}
+
+/* Mobile SubNav - slideDown */
+.mobileSubNav {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-primary-50);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+}
+
+.mobileSubNav>* {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobileSubNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileSubNav.open {
+  grid-template-rows: 1fr;
+}
+
+.mobileSubNavItem {
+  border-top: 1px solid #f0f0f0;
+}
+
+.mobileSubNavLink {
+  display: block;
+  padding: 12px 20px 12px 36px;
+  font-size: 0.9rem;
+  color: var(--color-secondary-50);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobileSubNavLink:hover {
+  color: var(--color-primary-20);
+  background-color: var(--color-primary-40);
+}
+
+/* Mobile Menu Footer */
+.mobileMenu-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+.mobileMenu-footerLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  color: var(--color-secondary-50);
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.mobileMenu-footerLink:hover {
+  color: var(--color-primary-20);
+}
+
+/* lg 以上隱藏 mobile menu 相關元素 */
+@media (min-width: 1024px) {
+
+  .mobileMenu,
+  .backdrop-overlay {
+    display: none !important;
+  }
+}

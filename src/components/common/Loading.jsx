@@ -1,6 +1,11 @@
 import "@/assets/styles/Loading.css";
+import { useLoading } from "@/hocks";
 
 const Loading = () => {
+	
+	const { isLoading } = useLoading();
+	if (!isLoading) return null;
+
 	return (
 		<div className="loading-overlay">
 			<div className="loading-container">
