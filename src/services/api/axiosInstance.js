@@ -19,13 +19,11 @@ const pendingRequests = new Set();
 export const api = axios.create({
   baseURL: `${API_BASE}/api/${API_PATH}`,
   timeout: 10000,
-  withCredentials: true,
 });
 
 export const plainApi = axios.create({
   baseURL: API_BASE,
   timeout: 10000,
-  withCredentials: true,
 });
 
 // Request 攔截器，加入 Token

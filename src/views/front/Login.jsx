@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
+import { login } from "@/store/authSlice";
+
 // Images Resources
 import logo from "@/images/logo-color.png";
 
@@ -13,7 +15,7 @@ const Login = () => {
   const { isLoggingIn: isLoading } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { register, handleSubmit, formState: { errors }, } = useForm({
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm({
     defaultValues: {
       username: "",
       password: "",
@@ -21,7 +23,20 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-
+    dispatch(login(data))
+      .unwrap()
+      .then(() => {
+        toast.success("登入成功");
+        navigate("/admin/dashboard", { replace: true });
+      })
+      .catch((error) => {
+        toast.error(`${error}`, {
+          autoClose: 3000,
+          position: "top-center",
+          theme: "colored",
+        });
+        reset({ username: data.username, password: "" });
+      });
   }
 
   return (

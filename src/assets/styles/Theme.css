@@ -65,6 +65,7 @@
   } */
 
   body {
+    font-family: var(--font-display);
     color: var(--color-secondary-80);
   }
 
@@ -162,6 +163,22 @@
 
     &:focus {
       box-shadow: 0 0 0 4px var(--input-focus-ring), 0 4px 12px oklch(0% 0 0 / 0.08);
+    }
+  }
+
+  .sectionHero {
+    position: relative;
+    background-image: var(--bg-mobile);
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 375 / 104;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 992px) {
+      background-image: var(--bg-desktop);
+      aspect-ratio: 1920 / 390;
     }
   }
 }

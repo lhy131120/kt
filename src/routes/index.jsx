@@ -12,6 +12,8 @@ import Dashboard from "@/views/admin/Dashboard";
 
 import NotFound from "@/views/front/NotFound";
 
+import RouteGuade from "../components/RouteGuard";
+
 const router = createHashRouter([
   {
     path: "/",
@@ -34,8 +36,13 @@ const router = createHashRouter([
         element: <Product />
       },
       {
-        path: "login",
-        element: <Login />
+        element: <RouteGuade type="auth" />,
+        children: [
+          {
+            path: "login",
+            element: <Login />
+          }
+        ]
       }
     ]
   },
@@ -44,8 +51,13 @@ const router = createHashRouter([
     element: <BackendLayout />,
     children: [
       {
-        path: "dashboard",
-        element: <Dashboard />
+        element: <RouteGuade type="protected" />,
+        children: [
+          {
+            path: "dashboard",
+            element: <Dashboard />
+          }
+        ]
       }
     ]
   },
