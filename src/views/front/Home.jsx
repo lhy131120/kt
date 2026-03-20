@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback, memo, useRef } from "react";
-import { api } from "@/services";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 // Redux
-import { fetchProducts } from "@/store/fetchProductsSlice";
+import { fetchAllProducts } from "@/store/fetchProductsSlice";
 
 // React-toastify
 import { toast } from "react-toastify";
@@ -264,7 +263,7 @@ const Home = () => {
 
   useEffect(() => {
     if (products.length === 0) {
-      dispatch(fetchProducts());
+      dispatch(fetchAllProducts());
     }
   }, [dispatch, products.length]);
 

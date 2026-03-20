@@ -1,14 +1,33 @@
 import bannerDesktop from "@/images/bacground_product_L.png";
 import bannerMobile from "@/images/bacground_product_S.png";
 
+import { fetchProducts } from "@/store/fetchProductsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+
 const Products = () => {
+
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.fetchProducts.products);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts())
+        .unwrap()
+        .catch(err => (console.log("reject", err)))
+    }
+  }, [dispatch, products.length]);
   return (
     <>
-      <div className="sectionHero" style={{ '--bg-desktop': `url(${bannerDesktop})`, '--bg-mobile': `url(${bannerMobile})` }}>
-        <h1 className="sectionTitle">商品分類</h1>
+      <div className="sectionHero mb-2 lg:mb-10" style={{ '--bg-desktop': `url(${bannerDesktop})`, '--bg-mobile': `url(${bannerMobile})` }}>
+        <div className="container">
+          <h1 className="sectionTitle">商品分類</h1>
+        </div>
       </div>
       <div className="container">
-        <nav></nav>
+        <nav className="mb-4 lg:mb-10">這是nav</nav>
         <div>
           <div className="flex flex-col lg:flex-row items-center gap-8">
             <h2 className="title size-fit whitespace-nowrap mb-2 lg:mb-0"><span className="p-0">亞洲風味</span></h2>

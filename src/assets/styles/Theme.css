@@ -179,6 +179,12 @@
     @media (min-width: 992px) {
       background-image: var(--bg-desktop);
       aspect-ratio: 1920 / 390;
+      justify-content: flex-start;
     }
+  }
+
+  .sectionTitle {
+    @apply text-center lg:text-start lg:ms-27.5 text-secondary-50 font-bold;
+    font-size: clamp(1.5rem, 0.431rem + 1.7241vw, 2.5rem);
   }
 }
